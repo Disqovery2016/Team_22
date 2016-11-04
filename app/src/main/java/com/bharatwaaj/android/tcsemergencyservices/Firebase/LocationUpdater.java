@@ -15,7 +15,6 @@ public class LocationUpdater {
     public static void updateLocationToFirebase(LatLng latLng){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabase = firebaseDatabase.getReference();
-        mDatabase.child("Ambulances").child("LatLng").setValue(latLng);
+        mDatabase.child("Users").child("LatLng").setValue(latLng);
     }
-
 }
