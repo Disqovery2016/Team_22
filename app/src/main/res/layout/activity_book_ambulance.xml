@@ -4,6 +4,6 @@
     android:id="@+id/activity_book_ambulance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bharatwaaj.android.tcsemergencyservices.Activities.BookAmbulanceActivity">
+    tools:context="com.bharatwaaj.android.tcsemergencyservices.Activities.HomeActivity">
 
 </RelativeLayout>

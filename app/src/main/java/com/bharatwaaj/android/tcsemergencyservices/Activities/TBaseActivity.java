@@ -29,7 +29,7 @@ public class TBaseActivity extends AppCompatActivity implements ConnectivityRece
     public ProgressDialog mProgressDialog;
 
     // UI Components
-    private Toolbar toolbar;
+    public Toolbar toolbar;
     private TextView toolBarTitle;
     private ImageView profileMenuButton;
     private ImageView activityMenuButton;
