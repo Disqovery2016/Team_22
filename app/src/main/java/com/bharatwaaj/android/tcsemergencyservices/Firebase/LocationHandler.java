@@ -15,7 +15,7 @@ public class LocationHandler {
     public static void updateLocationToFirebase(LatLng latLng) {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mDatabase = firebaseDatabase.getReference();
-        mDatabase.child("Users").child("LatLng").setValue(latLng);
+        mDatabase.child("Users").setValue(latLng);
     }
 
 }
