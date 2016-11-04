@@ -32,10 +32,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
@@ -57,8 +54,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private DatabaseReference longitudeReference;
     private ValueEventListener valueEventListener;
 
-    private String ambuLati;
-    private String ambuLongi;
 
     public MapsFragment() {
         // Required empty public constructor
@@ -69,15 +64,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                              Bundle savedInstanceState) {
         // Inflate the layout for this supportMapFragment
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
-
-        latitudeReference = FirebaseDatabase.getInstance().getReference()
-                .child("Ambulance").child("LatLng").child("latitude");
-
-        longitudeReference = FirebaseDatabase.getInstance().getReference()
-                .child("Ambulance").child("LatLng").child("longitude");
-
-        getFirebaseData();
-
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         supportMapFragment = new SupportMapFragment();
@@ -165,30 +151,4 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 .newCameraPosition(cameraPosition));
     }
 
-    public void getFirebaseData() {
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-               ambuLati = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(), ambuLati, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        ValueEventListener postListener2 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ambuLongi = dataSnapshot.getValue().toString();
-                Toast.makeText(getActivity(), ambuLongi, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        latitudeReference.addValueEventListener(postListener);
-        longitudeReference.addValueEventListener(postListener2);
-    }
 }
