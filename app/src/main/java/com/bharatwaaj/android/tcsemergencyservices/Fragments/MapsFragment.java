@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +105,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 LocationHandler.updateLocationToFirebase(latLng);
             }
             if(LocationHandler.retrieveLocationToFirebase() != null){
-                Toast.makeText(getActivity(),LocationHandler.retrieveLocationToFirebase() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),LocationHandler.retrieveLocationToFirebase() , Toast.LENGTH_LONG).show();
+                Log.d("MyTag",LocationHandler.retrieveLocationToFirebase() );
             }
             mLocationRequest = new LocationRequest();
             mLocationRequest.setInterval(5000); //5 seconds
