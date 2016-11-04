@@ -170,6 +170,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                ambuLati = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(), ambuLati, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -180,13 +181,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ambuLongi = dataSnapshot.getValue().toString();
+                Toast.makeText(getActivity(), ambuLongi, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         };
-
         latitudeReference.addValueEventListener(postListener);
         longitudeReference.addValueEventListener(postListener2);
     }
