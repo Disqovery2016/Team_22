@@ -29,8 +29,8 @@ public class Ambulance {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("lat", lat);
-        result.put("lon", lon);
+        result.put("latitude", lat);
+        result.put("longitude", lon);
         return result;
     }
 
