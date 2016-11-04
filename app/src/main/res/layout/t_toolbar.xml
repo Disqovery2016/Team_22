@@ -12,7 +12,7 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <com.qronos.android.qcouriers.Widgets.QTextView
+        <com.bharatwaaj.android.tcsemergencyservices.Widgets.TTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
