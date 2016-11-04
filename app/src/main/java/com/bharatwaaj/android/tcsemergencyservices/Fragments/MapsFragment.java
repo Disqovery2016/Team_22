@@ -12,7 +12,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +53,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private Circle currLocationMarker;
     private int radiusSize = 2500;
 
+    private DatabaseReference latitudeReference;
+    private DatabaseReference longitudeReference;
+    private ValueEventListener valueEventListener;
+
+    private String ambuLati;
+    private String ambuLongi;
+
     public MapsFragment() {
         // Required empty public constructor
     }
@@ -58,6 +69,15 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                              Bundle savedInstanceState) {
         // Inflate the layout for this supportMapFragment
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
+
+        latitudeReference = FirebaseDatabase.getInstance().getReference()
+                .child("Ambulance").child("LatLng").child("latitude");
+
+        longitudeReference = FirebaseDatabase.getInstance().getReference()
+                .child("Ambulance").child("LatLng").child("longitude");
+
+        getFirebaseData();
+
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         supportMapFragment = new SupportMapFragment();
@@ -104,10 +124,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 currLocationMarker = mGoogleMap.addCircle(circleOptions);
                 LocationHandler.updateLocationToFirebase(latLng);
             }
-            if(LocationHandler.retrieveLocationToFirebase() != null){
-                Toast.makeText(getActivity(),LocationHandler.retrieveLocationToFirebase() , Toast.LENGTH_LONG).show();
-                Log.d("MyTag",LocationHandler.retrieveLocationToFirebase() );
-            }
             mLocationRequest = new LocationRequest();
             mLocationRequest.setInterval(5000); //5 seconds
             mLocationRequest.setFastestInterval(3000); //3 seconds
@@ -147,5 +163,31 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 .target(latLng).zoom(13).build();
         mGoogleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
+    }
+
+    public void getFirebaseData() {
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               ambuLati = dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        ValueEventListener postListener2 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ambuLongi = dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        latitudeReference.addValueEventListener(postListener);
+        longitudeReference.addValueEventListener(postListener2);
     }
 }
