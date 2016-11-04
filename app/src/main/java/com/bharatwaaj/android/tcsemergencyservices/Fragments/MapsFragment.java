@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bharatwaaj.android.tcsemergencyservices.Firebase.LocationUpdater;
+import com.bharatwaaj.android.tcsemergencyservices.Firebase.LocationHandler;
 import com.bharatwaaj.android.tcsemergencyservices.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -101,7 +101,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                         .strokeColor(Color.BLUE)
                         .fillColor(Color.parseColor("#400084d3"));
                 currLocationMarker = mGoogleMap.addCircle(circleOptions);
-                LocationUpdater.updateLocationToFirebase(latLng);
+                LocationHandler.updateLocationToFirebase(latLng);
+            }
+            if(LocationHandler.retrieveLocationToFirebase() != null){
+                Toast.makeText(getActivity(),LocationHandler.retrieveLocationToFirebase() , Toast.LENGTH_SHORT).show();
             }
             mLocationRequest = new LocationRequest();
             mLocationRequest.setInterval(5000); //5 seconds
@@ -136,7 +139,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 .strokeColor(Color.BLUE)
                 .fillColor(Color.parseColor("#400084d3"));
         currLocationMarker = mGoogleMap.addCircle(circleOptions);
-        LocationUpdater.updateLocationToFirebase(latLng);
+        LocationHandler.updateLocationToFirebase(latLng);
         Toast.makeText(getActivity(), "Location Changed", Toast.LENGTH_SHORT).show();
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(latLng).zoom(13).build();
