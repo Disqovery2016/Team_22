@@ -3,7 +3,6 @@ title: TCS EMERGENCY SERVICES APP
 description: Reducing the response time in booking an ambulance
 author: Bharatwaaj
 tags: accidents,one-tap, ambulance, hospital
-colors: light yellow
 created:  2016 Nov 03
 modified: 2016 Nov 05
 ---
@@ -43,7 +42,7 @@ Screenshots
 These are a few Screenshots of the beta-version of the android app
 
 
-![Alt text](/screenshots (1).jpg?raw=true)
+![Alt text](/../screenshots (1).jpg?raw=true)
 ![Alt text](/screenshots (2).jpg?raw=true)
 ![Alt text](/screenshots (3).jpg?raw=true)
 ![Alt text](/screenshots (4).jpg?raw=true)
