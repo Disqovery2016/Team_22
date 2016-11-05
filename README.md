@@ -13,9 +13,6 @@ TCS Emergency Services Android App
 
 ## Precision colors for machines and people
 
-[![solarized dualmode](https://github.com/altercation/solarized/raw/master/img/solarized-yinyang.png)](#features)
-
-
 *   **Full Git Repository:**
 
     The full git repository is at: <https://github.com/Disqovery2016/Team_22>
