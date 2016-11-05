@@ -56,7 +56,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private GoogleMap mGoogleMap;
     private Circle currLocationMarker;
     private int radiusSize = 500;
-    private Marker myAmbulanceMarker[] = new Marker[10];
+    private Marker myAmbulanceMarker;
     private DatabaseReference mPostReference;
 
     public MapsFragment() {
@@ -161,28 +161,23 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                double latitude[] = new double[10];
-                double longitude[] = new double[10];
-                int i = 0;
+                double latitude = 0, longitude = 0;
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    if (!data.getKey().equals("Users")) {
-                        if (i < 9) {
-                            latitude[i] = Double.parseDouble(data.child("latitude").getValue().toString());
-                            longitude[i] = Double.parseDouble(data.child("longitude").getValue().toString());
-                            if (myAmbulanceMarker[i] != null) {
-                                myAmbulanceMarker[i].remove();
-                                myAmbulanceMarker[i] = null;
-                            }
-                            myAmbulanceMarker[i] = mGoogleMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude[i], longitude[i]))
-                                    .title("AIIMS Ambulance")
-                                    .snippet("Capacity: 2")
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_ambulance_white)));
-                            i++;
-                        }
+                    if(data.getKey().equals("Ambulances")){
+                        latitude = Double.parseDouble(data.child("latitude").getValue().toString());
+                        longitude = Double.parseDouble(data.child("longitude").getValue().toString());
                     }
                 }
-
+                if (myAmbulanceMarker != null) {
+                    myAmbulanceMarker.remove();
+                    myAmbulanceMarker = null;
+                } else {
+                    myAmbulanceMarker = mGoogleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title("AIIMS Ambulance")
+                            .snippet("Capacity: 2")
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_ambulance_white)));
+                }
             }
 
             @Override
