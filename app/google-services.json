@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "272358110805",
+    "firebase_url": "https://tcs-emergency-services.firebaseio.com",
+    "project_id": "tcs-emergency-services",
+    "storage_bucket": "tcs-emergency-services.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272358110805:android:a0b094b83f363d98",
+        "android_client_info": {
+          "package_name": "com.bharatwaaj.android.tcsemergencyservices"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272358110805-fcfr0a0hnm91nbkgs07j0e2bu0u0i5dq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bharatwaaj.android.tcsemergencyservices",
+            "certificate_hash": "0938496A1996E963CCCE902B85189F242606A7DD"
+          }
+        },
+        {
+          "client_id": "272358110805-0vtfr6vi1lovtlujjk7cfbhb6ptkorkb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-TWdqHOXRCs0uzYXMm9dQXHo1cOI1IEM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272358110805-0vtfr6vi1lovtlujjk7cfbhb6ptkorkb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

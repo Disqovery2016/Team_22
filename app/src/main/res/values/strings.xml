@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TCS Emergency Services</string>
+    <string name="loading">Loading</string>
+    <string name="login_activity">Login</string>
+    <string name="sign_up_activity">Sign Up</string>
+    <string name="forgot_password_activity">Forgot Password</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="android_maps_api_key">AIzaSyBi74hRZ2lZjMpn4iUhyWBsuuumB0oaXVM</string>
+    <string name="required">Required</string>
+</resources>
