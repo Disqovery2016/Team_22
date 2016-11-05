@@ -1,6 +1,7 @@
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 <script>
   // Initialize Firebase
+  var lat, lon;
   var config = {
     apiKey: "AIzaSyBpYijjHomdCxJFgRf_K055kPPUaYLEzCM",
     authDomain: "tcs-emergency-services.firebaseapp.com",
@@ -8,11 +9,23 @@
     storageBucket: "tcs-emergency-services.appspot.com",
     messagingSenderId: "272358110805"
   };
+  
   firebase.initializeApp(config);
+  
   var db = firebase.database();
-  var ref = db.ref();
-  ref.once('value', function(snapshot) {
-  		document.writeln(snapshot.child("Ambulances").child("latitude").val());
-      document.writeln(snapshot.child("Ambulances").child("longitude").val());
+  var ref = db.ref("DummyAmbulance");
+  
+  /*ref.once('value', function(snapshot) {
+    lat = snapshot.child("DummyAmbulance").child("latitude").val();
+    lon = snapshot.child("DummyAmbulance").child("longitude").val();
+  });*/
+
+ref.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    lat = childSnapshot.child("lat").val();
+    lon = childSnapshot.child("lon").val();
+    document.writeln( lat + " " +  lon);
   });
+});
+
 </script>
