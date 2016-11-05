@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,10 +56,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private GoogleMap mGoogleMap;
     private Circle currLocationMarker;
     private int radiusSize = 500;
-
-    private DatabaseReference latitudeReference;
-    private DatabaseReference longitudeReference;
-    private ValueEventListener valueEventListener;
+    private Marker myAmbulanceMarker;
     private DatabaseReference mPostReference;
 
     public MapsFragment() {
@@ -153,22 +151,27 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         LocationHandler.updateLocationToFirebase(latLng);
         Toast.makeText(getActivity(), "Location Changed", Toast.LENGTH_SHORT).show();
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latLng).zoom(14).build();
+                .target(latLng).zoom(16).build();
         mGoogleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
     }
 
-    public void FindAmbulanceFromFirebase(){
+    public void FindAmbulanceFromFirebase() {
         mPostReference = FirebaseDatabase.getInstance().getReference();
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot data : dataSnapshot.getChildren()){
-                    double latitude = Double.parseDouble(data.child("latitude").getValue().toString());
-                    double longitude = Double.parseDouble(data.child("longitude").getValue().toString());
-                    mGoogleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(latitude,longitude))
+                if (myAmbulanceMarker != null) {
+                    myAmbulanceMarker.remove();
+                    myAmbulanceMarker = null;
+                } else {
+                    double latitude = 0, longitude = 0;
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        latitude = Double.parseDouble(data.child("latitude").getValue().toString());
+                        longitude = Double.parseDouble(data.child("longitude").getValue().toString());
+                    }
+                    myAmbulanceMarker = mGoogleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
                             .title("AIIMS Ambulance")
                             .snippet("Capacity: 2")
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_ambulance_black)));
