@@ -1,0 +1,24 @@
+<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBpYijjHomdCxJFgRf_K055kPPUaYLEzCM",
+    authDomain: "tcs-emergency-services.firebaseapp.com",
+    databaseURL: "https://tcs-emergency-services.firebaseio.com",
+    storageBucket: "tcs-emergency-services.appspot.com",
+    messagingSenderId: "272358110805"
+  };
+  firebase.initializeApp(config);
+  var db = firebase.database();
+  var ref = db.ref();
+  if(ref != null){
+  	document.writeln("hi");
+  }
+  ref.once('value', function(snapshot) {
+  		snapshot.forEach(function(childSnapshot) {
+    	var childKey = childSnapshot.key();
+    	var childData = childSnapshot.val();
+    		document.writeln(childData);
+  		});
+	});
+</script>

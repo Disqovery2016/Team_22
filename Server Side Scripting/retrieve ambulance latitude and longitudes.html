@@ -1,0 +1,55 @@
+<html>
+<head>
+<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+
+  // Initialize Firebase
+  var LatLng = new Array();
+  var config = {
+    apiKey: "AIzaSyBpYijjHomdCxJFgRf_K055kPPUaYLEzCM",
+    authDomain: "tcs-emergency-services.firebaseapp.com",
+    databaseURL: "https://tcs-emergency-services.firebaseio.com",
+    storageBucket: "tcs-emergency-services.appspot.com",
+    messagingSenderId: "272358110805"
+  };
+  
+  firebase.initializeApp(config);
+  
+  var db = firebase.database();
+  var ref = db.ref("DummyAmbulance");
+
+ref.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    // lat.push(childSnapshot.child("lat").val());
+    // lon.push(childSnapshot.child("lon").val());
+    LatLng.push(childSnapshot.val());
+  });
+});
+
+function distance(lat1, lon1, lat2, lon2) {
+  var radlat1 = Math.PI * lat1/180
+  var radlat2 = Math.PI * lat2/180
+  var theta = lon1-lon2
+  var radtheta = Math.PI * theta/180
+  var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist)
+  dist = dist * 180/Math.PI
+  dist = dist * 60 * 1.1515
+  dist = dist * 1.609344
+  return dist
+}
+
+function sendAm(){ 
+  for(i=0;LatLng.length;i++){
+  document.writeln(LatLng(s));  
+  }
+}
+
+</script>
+</head>
+<body>
+    <input id="user_lat" name="lat" size="30" type="text" />
+    <input id="user_lon" name="lon" size="30" type="text" />
+    <input id="getAm" type="button" value="Get an Ambulance" onclick="sendAm();"/>        
+</body>
+</html>

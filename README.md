@@ -41,13 +41,13 @@ Screenshots
 
 These are a few Screenshots of the beta-version of the android app
 
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(1).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(2).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(3).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(4).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(5).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(6).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(7).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(8).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(9).jpeg?raw=true" width="150">
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(10).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(1).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(2).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(3).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(4).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(5).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(6).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(7).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(8).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(9).jpeg?raw=true" width="150">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/Screenshots/screenshots%20(10).jpeg?raw=true" width="150">
