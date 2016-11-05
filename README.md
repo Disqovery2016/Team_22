@@ -6,7 +6,6 @@ tags: accidents,one-tap, ambulance, hospital
 colors: light yellow
 created:  2016 Nov 03
 modified: 2016 Nov 05
-
 ---
 
 TCS Emergency Services Android App
