@@ -3,7 +3,7 @@
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 <script>
   // Initialize Firebase
-  var lat = new Array(), lon = new Array();
+  var LatLng = new Array();
   var config = {
     apiKey: "AIzaSyBpYijjHomdCxJFgRf_K055kPPUaYLEzCM",
     authDomain: "tcs-emergency-services.firebaseapp.com",
@@ -16,17 +16,12 @@
   
   var db = firebase.database();
   var ref = db.ref("DummyAmbulance");
-  
-  /*ref.once('value', function(snapshot) {
-    lat = snapshot.child("DummyAmbulance").child("latitude").val();
-    lon = snapshot.child("DummyAmbulance").child("longitude").val();
-  });*/
 
 ref.once('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
-    lat.push(childSnapshot.child("lat").val());
-    lon.push(childSnapshot.child("lon").val());
-    // document.writeln( lat + " " +  lon);
+    // lat.push(childSnapshot.child("lat").val());
+    // lon.push(childSnapshot.child("lon").val());
+    LatLng.push(childSnapshot);
   });
 });
 
@@ -44,7 +39,9 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 
 function sendAmbulance(){
-
+  for (Object s : LatLng){
+      
+  }
 }
 
 </script>
