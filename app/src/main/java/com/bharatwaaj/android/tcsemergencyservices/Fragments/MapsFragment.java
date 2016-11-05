@@ -151,7 +151,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         LocationHandler.updateLocationToFirebase(latLng);
         Toast.makeText(getActivity(), "Location Changed", Toast.LENGTH_SHORT).show();
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latLng).zoom(16).build();
+                .target(latLng).zoom(20).build();
         mGoogleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
     }
@@ -162,7 +162,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (myAmbulanceMarker != null) {
-                    myAmbulanceMarker.remove();
                     myAmbulanceMarker = null;
                 } else {
                     double latitude = 0, longitude = 0;
