@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bharatwaaj.android.tcsemergencyservices.Firebase.LocationHandler;
-import com.bharatwaaj.android.tcsemergencyservices.Models.Ambulance;
 import com.bharatwaaj.android.tcsemergencyservices.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,10 +29,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,7 +54,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private LatLng latLng;
     private GoogleMap mGoogleMap;
     private Circle currLocationMarker;
-    private int radiusSize = 2500;
+    private int radiusSize = 500;
 
     private DatabaseReference latitudeReference;
     private DatabaseReference longitudeReference;
@@ -69,7 +70,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                              Bundle savedInstanceState) {
         // Inflate the layout for this supportMapFragment
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
-        setUpFirebase();
+        FindAmbulanceFromFirebase();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         supportMapFragment = new SupportMapFragment();
@@ -152,18 +153,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         LocationHandler.updateLocationToFirebase(latLng);
         Toast.makeText(getActivity(), "Location Changed", Toast.LENGTH_SHORT).show();
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latLng).zoom(13).build();
+                .target(latLng).zoom(14).build();
         mGoogleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
     }
 
-    public void setUpFirebase(){
+    public void FindAmbulanceFromFirebase(){
         mPostReference = FirebaseDatabase.getInstance().getReference();
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Ambulance amb = dataSnapshot.getValue(Ambulance.class);
-                Toast.makeText(getActivity(), amb.getLat() + " " + amb.getLon(), Toast.LENGTH_SHORT).show();
+
+                for(DataSnapshot data : dataSnapshot.getChildren()){
+                    double latitude = Double.parseDouble(data.child("latitude").getValue().toString());
+                    double longitude = Double.parseDouble(data.child("longitude").getValue().toString());
+                    mGoogleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude,longitude))
+                            .title("AIIMS Ambulance")
+                            .snippet("Capacity: 2")
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_ambulance_black)));
+                }
             }
 
             @Override
