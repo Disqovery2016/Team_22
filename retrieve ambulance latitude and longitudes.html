@@ -1,3 +1,5 @@
+<html>
+<head>
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -24,8 +26,28 @@ ref.once('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
     lat = childSnapshot.child("lat").val();
     lon = childSnapshot.child("lon").val();
-    document.writeln( lat + " " +  lon);
+    // document.writeln( lat + " " +  lon);
   });
 });
 
+function distance(lat1, lon1, lat2, lon2) {
+  var radlat1 = Math.PI * lat1/180
+  var radlat2 = Math.PI * lat2/180
+  var theta = lon1-lon2
+  var radtheta = Math.PI * theta/180
+  var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist)
+  dist = dist * 180/Math.PI
+  dist = dist * 60 * 1.1515
+  dist = dist * 1.609344
+  return dist
+}
+
 </script>
+</head>
+<body>
+    <input id="user_lat" name="lat" size="30" type="text" />
+    <input id="user_lon" name="lon" size="30" type="text" />
+    <input type="button" onclick="sendAmbulance()">        
+</body>
+</html>
