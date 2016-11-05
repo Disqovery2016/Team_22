@@ -12,7 +12,7 @@
   var db = firebase.database();
   var ref = db.ref();
   if(ref != null){
-  	// document.writeln("das");
+  	document.writeln("hi");
   }
   ref.once('value', function(snapshot) {
   		snapshot.forEach(function(childSnapshot) {
