@@ -161,14 +161,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (myAmbulanceMarker != null) {
-                    myAmbulanceMarker = null;
-                } else {
-                    double latitude = 0, longitude = 0;
-                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                double latitude = 0, longitude = 0;
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if(data.getKey().equals("Ambulances")){
                         latitude = Double.parseDouble(data.child("latitude").getValue().toString());
                         longitude = Double.parseDouble(data.child("longitude").getValue().toString());
                     }
+                }
+                if (myAmbulanceMarker != null) {
+                    myAmbulanceMarker.remove();
+                    myAmbulanceMarker = null;
+                } else {
                     myAmbulanceMarker = mGoogleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title("AIIMS Ambulance")
