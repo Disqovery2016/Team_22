@@ -41,8 +41,7 @@ Screenshots
 
 These are a few Screenshots of the beta-version of the android app
 
-![Alt text](https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(1).jpeg)
-<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(1).jpeg?raw=true" width="48">
+<img src="https://github.com/Disqovery2016/Team_22/blob/master/screenshots%20(1).jpeg?raw=true" width="100">
 ![Alt text](/screenshots (2).jpeg?raw=true)
 <img src="https://github.com/Disqovery2016/Team_22" width="48">
 ![Alt text](/screenshots (3).jpeg?raw=true)
