@@ -42,13 +42,13 @@ Screenshots
 These are a few Screenshots of the beta-version of the android app
 
 
-![Alt text](/../screenshots (1).jpg?raw=true)
-![Alt text](/screenshots (2).jpg?raw=true)
-![Alt text](/screenshots (3).jpg?raw=true)
-![Alt text](/screenshots (4).jpg?raw=true)
-![Alt text](/screenshots (5).jpg?raw=true)
-![Alt text](/screenshots (6).jpg?raw=true)
-![Alt text](/screenshots (7).jpg?raw=true)
-![Alt text](/screenshots (8).jpg?raw=true)
-![Alt text](/screenshots (9).jpg?raw=true)
-![Alt text](/screenshots (10).jpg?raw=true)
+![Alt text](/screenshots (1).jpeg?raw=true)
+![Alt text](/screenshots (2).jpeg?raw=true)
+![Alt text](/screenshots (3).jpeg?raw=true)
+![Alt text](/screenshots (4).jpeg?raw=true)
+![Alt text](/screenshots (5).jpeg?raw=true)
+![Alt text](/screenshots (6).jpeg?raw=true)
+![Alt text](/screenshots (7).jpeg?raw=true)
+![Alt text](/screenshots (8).jpeg?raw=true)
+![Alt text](/screenshots (9).jpeg?raw=true)
+![Alt text](/screenshots (10).jpeg?raw=true)
